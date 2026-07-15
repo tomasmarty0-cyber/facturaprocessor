@@ -1,0 +1,289 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f5f5;
+}
+
+.header {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.backBtn {
+  background: #f0f0f0;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.3s;
+}
+
+.backBtn:hover {
+  background: #e0e0e0;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: #0066cc;
+}
+
+.main {
+  flex: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px 20px;
+}
+
+.uploadSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.uploadBox {
+  background: white;
+  border-radius: 12px;
+  border: 2px dashed #0066cc;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.uploadBox:hover {
+  background: #f0f6ff;
+  border-color: #0052a3;
+}
+
+.fileInput {
+  display: none;
+}
+
+.uploadLabel {
+  cursor: pointer;
+}
+
+.uploadContent {
+  pointer-events: none;
+}
+
+.uploadIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.uploadBox h3 {
+  font-size: 18px;
+  color: #0066cc;
+  margin-bottom: 8px;
+}
+
+.uploadBox p {
+  color: #666;
+  font-size: 14px;
+}
+
+.processBtn {
+  background: #0066cc;
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+  align-self: center;
+}
+
+.processBtn:hover:not(:disabled) {
+  background: #0052a3;
+}
+
+.processBtn:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.error {
+  background: #fee;
+  color: #c33;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #fcc;
+  font-size: 14px;
+}
+
+.resultSection {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.facturaData {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.section h3 {
+  font-size: 16px;
+  color: #0066cc;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.grid label {
+  font-weight: 500;
+  color: #333;
+  font-size: 13px;
+}
+
+.grid input {
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #f9fafb;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table thead {
+  background: #f9fafb;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table th {
+  font-weight: 600;
+  color: #333;
+}
+
+.table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.totales {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.totales > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.total {
+  font-weight: 600;
+  font-size: 16px;
+  color: #0066cc;
+  border-top: 2px solid #e5e7eb !important;
+  border-bottom: none !important;
+  margin-top: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.downloadBtn,
+.againBtn {
+  padding: 12px 32px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.downloadBtn {
+  background: #10b981;
+  color: white;
+}
+
+.downloadBtn:hover {
+  background: #059669;
+}
+
+.againBtn {
+  background: #0066cc;
+  color: white;
+}
+
+.againBtn:hover {
+  background: #0052a3;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 20px;
+  }
+
+  .uploadBox {
+    padding: 30px 20px;
+  }
+
+  .uploadIcon {
+    font-size: 36px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .downloadBtn,
+  .againBtn {
+    width: 100%;
+  }
+}
