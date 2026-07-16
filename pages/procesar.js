@@ -41,30 +41,43 @@ export default function Procesar() {
     try {
       const reader = new FileReader()
       reader.onload = async (e) => {
-        const base64 = e.target.result.split(',')[1]
+        try {
+          const base64 = e.target.result.split(',')[1]
+          
+          if (!base64) {
+            setError('Error al leer el PDF')
+            setLoading(false)
+            return
+          }
 
-        const response = await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          body: JSON.stringify({
-            cliente: cliente,
-            password: localStorage.getItem('cliente') === 'CLICK-FAST' ? 'clickfast2026' : 'madeoff2026',
-            pdfBase64: base64
+          const password = cliente === 'CLICK-FAST' ? 'clickfast2026' : 'madeoff2026'
+          
+          const response = await fetch(APPS_SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+              cliente: cliente,
+              password: password,
+              pdfBase64: base64
+            })
           })
-        })
 
-        const data = await response.json()
+          const data = await response.json()
 
-        if (data.success) {
-          setFactura(data.data)
-          setEditing(true)
-        } else {
-          setError(data.error || 'Error al procesar la factura')
+          if (data.success) {
+            setFactura(data.data)
+            setEditing(true)
+          } else {
+            setError(data.error || 'Error al procesar')
+          }
+          setLoading(false)
+        } catch (err) {
+          setError('Error: ' + err.message)
+          setLoading(false)
         }
       }
       reader.readAsDataURL(file)
     } catch (err) {
       setError('Error: ' + err.message)
-    } finally {
       setLoading(false)
     }
   }
